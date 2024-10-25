@@ -1,0 +1,9 @@
+CC = gcc
+
+# Compilation options:
+# -g: include debugging info symbols
+# -Wall: enable all warnings
+CFLAGS = -g -Wall
+
+printHeader: printHeader.o
+printHeader.o: printHeader.c wavHeader.h

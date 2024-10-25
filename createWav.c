@@ -62,4 +62,6 @@ int main(){
     FILE *wavfp = fopen("test.wav", "w");
     fwrite(&myWav, 1, header_length,wavfp);
     fwrite(buffer, 2, buffer_size, wavfp);
+
+    return 0;
 }
