@@ -1,20 +1,13 @@
 CC = gcc
-
-# Compilation options:
-# -g: include debugging info symbols
-# -Wall: enable all warnings
 CFLAGS = -g -Wall
-
 print:
 	make -f Makefile.printHeader
-
 copy:
 	make -f Makefile.copy
-
-
+multiply:
+	make -f Makefile.multiply
 .PHONY: clean
 clean:
-	rm -f *.o a.out printHeader copyWav
-
+	rm -f *.o a.out printHeader copyWav multiplyWav
 .PHONY: all
-all: clean myprogram
+all: clean print copy multiply

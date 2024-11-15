@@ -1,0 +1,10 @@
+CC = gcc
+
+# Compilation options:
+# -g: include debugging info symbols
+# -Wall: enable all warnings
+CFLAGS = -g -Wall
+
+multiplyWav: multiplyWav.o
+
+multiplyWav.o: multiplyWav.c wavHeader.h

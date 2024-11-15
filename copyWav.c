@@ -40,8 +40,6 @@ int main(int argc, char *argv[]){
     fwrite(&wavH, sizeof(struct wav_header), 1, wavW);
 
     char buffer[bufferSize];
-    size_t valOfRead;
-
 
 
     if(wavH.flength-wavH.dlength != 44){
