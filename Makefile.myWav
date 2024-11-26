@@ -1,0 +1,9 @@
+CC = gcc
+
+# Compilation options:
+# -g: include debugging info symbols
+# -Wall: enable all warnings
+CFLAGS = -g -Wall
+
+myWav_test: myWav_test.o
+myWav_test.o: myWav_test.c wavHeader.h
