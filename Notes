@@ -10,7 +10,7 @@ Currently I have a header file that works and methods that can seperate data
 The methods I want to make:
 
 string split(string WavName):
-        returns name of both headerfile.bin and content.bin
+        returns the necessary ints to parse the content.bin file 
 
 void combine(string newFileName, string headerfile.bin, string content.bin)
 // write a new file with newFileName with the provided header and content

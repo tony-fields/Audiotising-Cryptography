@@ -33,10 +33,28 @@ void splitWav(char *file){
 
 }
 
+//combine a header and contents of file to make new wav file
+void combineFiles(char *fileName, char *header, char *content){
+    int bufferSize = 128*1024; //128kb
+    FILE *fp = fopen(fileName, "wb");
+    FILE *head = fopen(header, "rb");
+    FILE *cont = fopen(content, "rb");
+    
+    struct wav_header wavH;
+    fread(&wavH, sizeof(struct wav_header), 1, head);
+    fwrite(&wavH, sizeof(struct wav_header), 1, fp);
+    fclose(head);
 
+    char buffer[bufferSize];
 
+    size_t bytesRead;
+    while ((bytesRead = fread(buffer, 1, bufferSize, cont)) > 0) {
+        fwrite(buffer, 1, bytesRead, fp);
+    }
 
-
+    fclose(fp);
+    fclose(cont);
+}
 
 int main(int argc, char *argv[]){
     if(argc!=3){
@@ -44,7 +62,8 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    splitWav(argv[1]);
+//    splitWav(argv[1]);
+    combineFiles(argv[2], "header.bin","content.bin");
 
     return 0;
 }
