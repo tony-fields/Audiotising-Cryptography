@@ -35,10 +35,8 @@ static PyObject* split_wav(PyObject* self, PyObject* args){
 
     fclose(fp);
     fclose(content);
-    Py_RETURN_NONE; // Return Python None
+    return Py_BuildValue("(iHH)",wavH.srate, wavH.bits_per_samp, wavH.num_chans);
 }
-
-
 
 //combine a header and contents of file to make new wav file
 static PyObject* combine_files(PyObject* self, PyObject* args) {
@@ -70,7 +68,7 @@ static PyObject* combine_files(PyObject* self, PyObject* args) {
 
     fclose(fp);
     fclose(cont);
-    return Py_BuildValue("(iiHH)",wavH.srate, wavH.bytes_per_sec, wavH.bytes_per_sec, wavH.bits_per_samp);
+    Py_RETURN_NONE;
 }
 
 
@@ -93,6 +91,6 @@ static struct PyModuleDef wavmodule = {
 };
 
 // Module initialization
-PyMODINIT_FUNC PyInit_wav_module(void) {
+PyMODINIT_FUNC PyInit_myWav_module(void) {
     return PyModule_Create(&wavmodule);
 }
